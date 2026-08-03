@@ -1,0 +1,4 @@
+click==8.1.8
+sh3d.py==0.2.1
+svg.py==1.6.0
+skia-python==144.0.post2

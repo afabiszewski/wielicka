@@ -1,0 +1,4 @@
+skia-python==87.8
+svg.py==1.6.0
+sh3d.py>=0.2.1
+click==8.1.8
