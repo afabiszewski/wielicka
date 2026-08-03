@@ -5,6 +5,8 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PYTHON="${PYTHON:-python3}"
 VENV_DIR="$ROOT_DIR/deps/.venv"
 
+"$ROOT_DIR/tools/setup_github.sh"
+
 if ! command -v "$PYTHON" >/dev/null 2>&1; then
   printf 'Python 3 is required. Set PYTHON to a Python 3.11+ executable.\n' >&2
   exit 1
