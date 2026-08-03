@@ -35,5 +35,6 @@ To replace the project with the simple 5 m by 5 m rectangular example:
 
 1. Regenerate `out/wielicka.svg`.
 2. Confirm `wielicka.sh3d` remains a readable Sweet Home 3D archive.
-3. Confirm the README preview points to `out/wielicka.svg`.
+3. Increment the README image `version` query when the render changes, then
+   confirm it still points to `out/wielicka.svg`.
 4. Review `git status` and include the updated render in the commit.
