@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Replace the example project with a simple 5 m by 5 m room."""
+"""Replace the example project with a simple 3 m by 4 m room."""
 
 from __future__ import annotations
 
@@ -10,8 +10,9 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
-SIDE = 500.0  # Sweet Home 3D stores dimensions in centimetres.
-POINTS = ((0.0, 0.0), (SIDE, 0.0), (SIDE, SIDE), (0.0, SIDE))
+WIDTH = 300.0  # Sweet Home 3D stores dimensions in centimetres.
+DEPTH = 400.0
+POINTS = ((0.0, 0.0), (WIDTH, 0.0), (WIDTH, DEPTH), (0.0, DEPTH))
 WALL_ENDPOINTS = tuple(
     (POINTS[index], POINTS[(index + 1) % 4]) for index in range(4)
 ) + (((0.0, 0.0), (0.0, 0.0)),) * 2
