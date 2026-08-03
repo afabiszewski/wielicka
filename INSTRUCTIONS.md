@@ -23,6 +23,14 @@ PYTHON=python3.13 ./tools/setup.sh
 The renderer reads the `.sh3d` archive directly and writes the committed SVG
 preview used by the README.
 
+## Reset the example layout
+
+To replace the project with the simple 5 m by 5 m rectangular example:
+
+```bash
+./deps/.venv/bin/python tools/set_example_layout.py wielicka.sh3d
+```
+
 ## Before committing
 
 1. Regenerate `out/wielicka.svg`.
