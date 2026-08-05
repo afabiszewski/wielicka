@@ -1,3 +1,3 @@
 # Wielicka Sweet Home 3D
 
-![Wielicka layout](out/wielicka.svg?version=2)
+![Wielicka layout](out/wielicka.svg?version=3)
