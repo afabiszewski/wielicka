@@ -6,6 +6,10 @@
   `wielicka.sh3d` as the single source of truth for the layout, and keep it a
   valid Sweet Home 3D archive that opens successfully in Sweet Home 3D after
   every change.
+- The current layout in `wielicka.sh3d`, including its north orientation, is
+  the agreed working layout. Never change its geometry, dimensions, wall
+  positions, or north orientation automatically. Only change this layout when
+  the user explicitly requests a layout change.
 - SVG files are renderer output only. Never edit them directly; generate them
   with the renderer.
 - Before every commit, render the current layout with
