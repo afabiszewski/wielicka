@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import math
 import re
 import sys
 from types import MethodType
@@ -13,7 +14,33 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT_DIR / "deps" / "sh3dkit"))
 
 from sh3d.FileLoader import FileLoader  # noqa: E402
+from sh3d.model.Wall import Wall  # noqa: E402
 from sh3dkit.renderer.SvgHomeRenderer import SvgHomeRenderer  # noqa: E402
+
+
+def _safe_compute_intersection(self, point1, point2, point3, point4, limit):
+    """Intersect wall-edge lines without slope singularities."""
+    direction1_x = point2[0] - point1[0]
+    direction1_y = point2[1] - point1[1]
+    direction2_x = point4[0] - point3[0]
+    direction2_y = point4[1] - point3[1]
+    determinant = direction1_x * direction2_y - direction1_y * direction2_x
+
+    if math.isclose(determinant, 0.0, abs_tol=1e-12):
+        return
+
+    offset_x = point3[0] - point1[0]
+    offset_y = point3[1] - point1[1]
+    distance = (offset_x * direction2_y - offset_y * direction2_x) / determinant
+    x = point1[0] + distance * direction1_x
+    y = point1[1] + distance * direction1_y
+
+    if (point1[0] - x) ** 2 + (point1[1] - y) ** 2 < limit * limit:
+        point1[0] = x
+        point1[1] = y
+
+
+Wall._compute_intersection = _safe_compute_intersection
 
 
 def main() -> int:
