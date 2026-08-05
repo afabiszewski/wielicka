@@ -19,6 +19,8 @@
   regenerate it before committing changes.
 - Keep the README's layout preview pointing to `out/wielicka.svg`, and verify
   that the preview is regenerated before committing.
+- Increment the README preview's cache-busting `version` query parameter on
+  every PR so GitHub does not display an older render.
 - When a layout change is difficult to apply, consult the open-source Sweet
   Home 3D source code to understand the `.sh3d` format and apply the change to
   `wielicka.sh3d` directly.
