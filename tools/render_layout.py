@@ -13,7 +13,22 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT_DIR / "deps" / "sh3dkit"))
 
 from sh3d.FileLoader import FileLoader  # noqa: E402
+from sh3d.model.Wall import Wall  # noqa: E402
 from sh3dkit.renderer.SvgHomeRenderer import SvgHomeRenderer  # noqa: E402
+
+
+_wall_compute_intersection = Wall._compute_intersection
+
+
+def _safe_compute_intersection(*args, **kwargs):
+    """Keep legacy axis-aligned wall joins renderable."""
+    try:
+        return _wall_compute_intersection(*args, **kwargs)
+    except ZeroDivisionError:
+        return None
+
+
+Wall._compute_intersection = _safe_compute_intersection
 
 
 def main() -> int:
